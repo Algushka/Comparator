@@ -33,10 +33,11 @@ goods.add(new Good(7.3,8,90));
    Comparator <Good> compareByRating= new ComparatorByRating();
         System.out.println("Сортировка по цене по возрастанию ");
 /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
-/* можно так*/   Collections.sort(goods, compareByPrice);
+/* можно так*/
+        Collections.sort(goods, compareByPrice);
         System.out.println(goods);
-/*цена в обр порядке*/ Collections.sort(goods, compareByPrice.reversed());
         System.out.println("Сортировка по цене в обратном порядке (убыванию-------");
+/*цена в обр порядке*/ Collections.sort(goods, compareByPrice.reversed());
         System.out.println(goods);
         System.out.println("Сортировка по рейтингу по возрастанию------ ");
         Collections.sort(goods,compareByRating);
@@ -51,11 +52,14 @@ goods.add(new Good(7.3,8,90));
         System.out.println("Сортировка по количеству товара по убыванию -------------------");
         Collections.sort(goods,compareByNumber.reversed());
         System.out.println(goods);
+        switch (chooseMethodOfSorting()) {
 
 
 
-}
-public int chooseMethodOfSorting() {
+        }
+
+
+public static int chooseMethodOfSorting() {
         Scanner scanner = new Scanner(System.in);
     System.out.println("Введите номер метода сортировки: ");
     System.out.println("1- Сортировка по цене по возрастанию: ");
@@ -65,10 +69,8 @@ public int chooseMethodOfSorting() {
     System.out.println("5- Сортировка по номеру по возрастанию: ");
     System.out.println("6- Сортировка по номеру по возрастанию: ");
     return scanner.nextInt();
-
-
-
 }
+
 
 
 }
