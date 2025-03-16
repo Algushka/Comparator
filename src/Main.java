@@ -21,7 +21,6 @@ public class Main {
         goods.add(new Good(8.3, 1, 20));
         goods.add(new Good(2.3, 3, 50));
         goods.add(new Good(7.3, 8, 90));
-
         System.out.println(chooseMethodOfSorting(goods));
     }
 public static int inputNumberOfMethodOfSorting() {
