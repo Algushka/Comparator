@@ -1,5 +1,5 @@
 import java.util.Comparator;
-
+//**
 public final class ComparatorByNumberOfGoods implements Comparator<Good> {
 
 

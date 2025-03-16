@@ -1,5 +1,5 @@
 import java.util.Comparator;
-
+//**
 public class Good {
     private double price;
     private int rating ;
