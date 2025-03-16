@@ -29,4 +29,7 @@ public class Good {
                 ", numberOfGoods=" + numberOfGoods +
                 '}';
     }
-}
+
+    }
+
+

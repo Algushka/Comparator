@@ -7,10 +7,27 @@
 //        несколько Comparator<Person>
 
 
-
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+List <Good> goods=new ArrayList<>();
+Good good1=new Good(5.6,9,10);
+goods.add(good1);
+goods.add(new Good(8.3,1,20));
+goods.add(new Good(2.3,3,50));
+goods.add(new Good(7.3,8,90));
+
+      //  System.out.println(goods);
+        Comparator<Good> byPrice= new ComparatorByPrice();
+  //      List<String> string =new ArrayList<>();/*тренируемся сравнивать String*/
+  //      string.add("ручка");
+   //     string.add("пенал");
+  //      string.add("карандаш");
+   //     System.out.println(string);
     }
 }
