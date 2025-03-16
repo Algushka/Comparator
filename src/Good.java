@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Good {
     private double price;
     private int rating ;
@@ -20,7 +22,9 @@ public class Good {
     public int getNumberOfGoods() {
         return numberOfGoods;
     }
-
+    public static Comparator <Good> compareByPrice(){
+        return new ComparatorByPrice();
+    }
     @Override
     public String toString() {
         return "Good{" +

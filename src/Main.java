@@ -1,6 +1,4 @@
 
-
-
 //Предположим, вы пишите программу для on-line магазина У каждого товара есть наименование,
 // цена, рейтинг, количество штук на складе и т.д.
 //Ваша программа должна предлагать пользователю выбрать, как бы он хотел сортировать товары
@@ -23,45 +21,6 @@ public class Main {
         goods.add(new Good(8.3, 1, 20));
         goods.add(new Good(2.3, 3, 50));
         goods.add(new Good(7.3, 8, 90));
-//      List<String> string =new ArrayList<>();/*тренируемся сравнивать String*/
-//      string.add("ручка");
-//      string.add("пенал");
-//     string.add("карандаш");
-//     Collections.sort(string);
-//     System.out.println(string);
-        // занесем все это в методы , хотя это тоже работало
-
-        // Comparator<Good> compareByPrice = new ComparatorByPrice();
-        // Comparator<Good> compareByRating = new ComparatorByRating();
-        // System.out.println("Сортировка по цене по возрастанию ");
-        /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
-        /* можно так*/
-//        Collections.sort(goods, compareByPrice);
-//        System.out.println(goods);
-//        System.out.println("Сортировка по цене в обратном порядке (убыванию-------");
-//        /*цена в обр порядке*/
-//        Collections.sort(goods, compareByPrice.reversed());
-//        System.out.println(goods);
-//        System.out.println("Сортировка по рейтингу по возрастанию------ ");
-//        Collections.sort(goods, compareByRating);
-//        System.out.println(goods);
-//        System.out.println("Сортировка по рейтингу по убыванию------ ");
-//        Collections.sort(goods, compareByRating.reversed());
-//        System.out.println(goods);
-//        System.out.println("Сортировка по количеству товара по возрастанию -------------------");
-//        Comparator<Good> compareByNumber = new ComparatorByNumberOfGoods();/*новая переменная класса ComparatorByNumberOfFood*/
-//        Collections.sort(goods, compareByNumber);
-//        System.out.println(goods);
-//        System.out.println("Сортировка по количеству товара по убыванию -------------------");
-//        Collections.sort(goods, compareByNumber.reversed());
-//        System.out.println(goods);
-
-//        System.out.println(SortingByPriceUp(goods));
-//        System.out.println(SortingByPriceDown(goods));
-//        System.out.println(SortingByRatingUp(goods));
-//        System.out.println(SortingByRatingDown(goods));
-//        System.out.println(SortingByNumberUp(goods));
-//        System.out.println(SortingByNumberDown(goods));
 
         System.out.println(chooseMethodOfSorting(goods));
     }
@@ -74,6 +33,7 @@ public static int inputNumberOfMethodOfSorting() {
     System.out.println("4- Сортировка по рейтингу по убыванию: ");
     System.out.println("5- Сортировка по номеру по возрастанию: ");
     System.out.println("6- Сортировка по номеру по возрастанию: ");
+    System.out.println("7-Сортировка по ретингу, затем по цене, затем по количеству товаров на складе");
     return scanner.nextInt();
 }
 public static List<Good> SortingByPriceUp(List<Good> goods){
@@ -83,7 +43,6 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
     /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
     /* можно так*/
     Collections.sort(goods_copy, compareByPrice);
-    //System.out.println(goods_copy);
     return goods_copy;
 }
     public static List<Good> SortingByPriceDown (List<Good> goods){
@@ -92,8 +51,8 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
         System.out.println("Сортировка по цене по убыванию  ");
         /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
         /* можно так*/
-        Collections.sort(goods_copy, compareByPrice.reversed());
-        //System.out.println(goods_copy);
+        /* можно так: Collections.sort(goods_copy, compareByPrice.reversed());*/
+        Collections.sort(goods_copy, Good.compareByPrice().reversed());/* сделаем через Good можно так*/
         return goods_copy;
     }
     public static List<Good> SortingByRatingUp (List<Good> goods){
@@ -103,7 +62,6 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
         /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
         /* можно так*/
         Collections.sort(goods_copy, compareByRating);
-        //System.out.println(goods_copy);
         return goods_copy;
     }
     public static List<Good> SortingByRatingDown (List<Good> goods){
@@ -113,7 +71,6 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
         /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
         /* можно так*/
         Collections.sort(goods_copy, compareByRating.reversed());
-        //System.out.println(goods_copy);
         return goods_copy;
     }
 
@@ -124,7 +81,6 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
         /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
         /* можно так*/
         Collections.sort(goods_copy, compareByNumber);
-        //System.out.println(goods_copy);
         return goods_copy;
     }
     public static List<Good> SortingByNumberDown (List<Good> goods){
@@ -134,9 +90,22 @@ public static List<Good> SortingByPriceUp(List<Good> goods){
         /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
         /* можно так*/
         Collections.sort(goods_copy, compareByNumber.reversed());
-        //System.out.println(goods_copy);
         return goods_copy;
     }
+    public static List<Good> SortingByRatingPriceNumberOfGoods (List<Good> goods){
+        Comparator<Good> compareByRating = new ComparatorByRating();
+        Comparator<Good> compareByNumber=new ComparatorByNumberOfGoods();
+        Comparator<Good> compareByPrice=new ComparatorByPrice();
+        List <Good> goods_copy=new ArrayList<>(goods);/*делаем копию list goods на всякий случай, чтобы его не менять */
+        System.out.println("Сортировка по количеству товаров по рейтингу, затем по цене, затем по количеству товаров на складе----  ");
+        /* можно так  */ // Collections.sort(goods, new ComparatorByPrice());
+        /* можно так*/
+        Collections.sort(goods_copy, compareByRating.thenComparing(compareByPrice).thenComparing(compareByNumber));
+        return goods_copy;
+    }
+
+
+
 public static List<Good> chooseMethodOfSorting(List<Good>goods){
 
     List<Good> goodsSorted =new ArrayList<>();
@@ -147,29 +116,8 @@ public static List<Good> chooseMethodOfSorting(List<Good>goods){
         case 4: goodsSorted = SortingByRatingDown(goods);break;
         case 5: goodsSorted = SortingByNumberUp(goods); break;
         case 6: goodsSorted = SortingByNumberDown(goods); break;
+        case 7: goodsSorted=SortingByRatingPriceNumberOfGoods(goods);break;
         default: goodsSorted= goods;}
     return goodsSorted;
 }
-
-
-
-
-
-//public static List <Good> SortingByPriceDown(){
-//
-//}
-//public static List <Good> SortingByRatingUp(){
-//
-//}
-//public static List <Good> SortingByRatingDown(){
-//
-//}
-//public static List <Good> SortingByNumberUp(){
-//
-//}
-//public static List <Good> SortingByNumberDown(){
-//
-//}
-
-
 }
